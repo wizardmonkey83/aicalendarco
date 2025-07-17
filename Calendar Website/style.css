@@ -1,0 +1,391 @@
+/* transition: 0.2s ease-in-out; add that to everything for buttons in and out standard. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Font A: Space Grotesk — for logo, nav, and headings */
+.logo,
+.nav-links a,
+.text-content h1,
+.page-content h1 { /* Added .page-content h1 */
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Font B: DM Sans — for body content, paragraphs, inputs, etc. */
+body,
+.text-content p,
+.page-content p { /* Added .page-content p */
+  font-family: 'DM Sans', sans-serif;
+}
+
+body {
+  background-color:#fdfdfd;
+  color: #111;
+}
+
+/* === NAVIGATION === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  position:sticky;
+  top:0;
+  z-index: 3;
+  background-color: transparent;
+  height: 8px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
+/* === HERO SECTION (for index.html) === */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  height: 700px; /* Adjust as needed for content */
+}
+
+.text-content {
+  max-width: 50%;
+  z-index: 2;
+}
+
+.text-content h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #0fa, #56f, #f0f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.main-btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  background-color: #f5ded4;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease-in-out;
+}
+
+.main-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ce7b59, #edd2cb);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.main-btn:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  transition: 0.2s ease-in-out;
+}
+
+.visual-box {
+  width: 100%; /* Or adjust as needed for design display */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Adjust as needed */
+  gap: 1rem;
+  z-index: 2;
+}
+
+.image-caption {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-right: 0.3rem;
+  color: #333;
+}
+
+
+/* === LINKS === */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === RESPONSIVE (Mobile) === */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    height: auto; /* Allow height to adjust on mobile */
+  }
+
+  .text-content,
+  .visual-box {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .visual-box {
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .main-btn {
+    align-self: center; /* Center button on mobile */
+    margin-top: 1rem;
+  }
+
+  .page-content {
+    margin: 2rem auto; /* Reduce margin on mobile */
+    padding: 1.5rem;
+  }
+
+  .page-content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* === ANIMATED BACKGROUND === */
+.animated-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out; /* Keeping float as a fallback, though specific blobFloat are used */
+}
+
+.blob1 {
+  background: radial-gradient(circle at center, #a5f3fc, #3b82f6);
+  top: -100px;
+  left: -100px;
+  animation: blobFloat1 20s ease-in-out infinite;
+}
+
+.blob2 {
+  background: radial-gradient(circle at center, #f0abfc, #a855f7);
+  top: 100px;
+  right: -150px;
+  animation: blobFloat2 24s ease-in-out infinite;
+}
+
+.blob3 {
+  background: radial-gradient(circle at center, #fca5a5, #f43f5e);
+  bottom: -150px;
+  left: 30%;
+  animation: blobFloat3 28s ease-in-out infinite;
+}
+
+.blob4 {
+  background: radial-gradient(circle at center, #99f6e4, #14b8a6);
+  bottom: -200px;
+  left: 60%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: floatUpRight 180s ease-in-out infinite;
+}
+
+/* Keyframes for blob animations */
+@keyframes blobFloat1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(200px, -100px) scale(1.05); }
+  50%  { transform: translate(300px, 150px) scale(0.95); }
+  75%  { transform: translate(150px, 200px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes blobFloat2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-200px, 150px) scale(1.07); }
+  50%  { transform: translate(-300px, 100px) scale(1); }
+  75%  { transform: translate(-150px, -150px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes blobFloat3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(180px, 220px) scale(1.1); }
+  50%  { transform: translate(-200px, 120px) scale(0.9); }
+  75%  { transform: translate(-100px, -180px) scale(1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatUpRight {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(30vw, -40vh) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* === FOOTER === */
+.site-footer {
+  margin-top: auto;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-row a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-row a:hover {
+  color: #ce7b59;
+}
+
+/* === COOKIE BANNER === */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ce7b59;
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  display: none;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cookie-buttons button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ce7b59, #edd2cb);
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.cookie-buttons button:hover {
+  transform: translateY(-1px);
+}
+
+/* === GENERAL LAYOUT === */
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Make main content area grow to push footer down */
+}
+
+/* Styles for about.html and order.html content */
+.page-content {
+  max-width: 800px;
+  margin: 5rem auto; /* Adjust top margin to give space below navbar */
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  z-index: 2; /* Ensure it's above the animated background */
+  position: relative; /* Needed for z-index to work */
+  flex: 1; /* Allow content to grow and push footer down */
+}
+
+.page-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.page-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Specific styling for the Google Form iframe */
+.google-form-iframe {
+  width: 100%;
+  height: 1200px; /* Adjust height as needed */
+  border: none;
+  border-radius: 15px; /* Match the overall rounded aesthetic */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
